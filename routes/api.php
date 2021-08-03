@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\ReaderController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +57,10 @@ Route::get('/users', [UserController::class, 'index']);
     Route::post('/categories', [CategoryController::class, 'store']);
     Route::put('/categories/{id}', [CategoryController::class, 'update']);
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
+
+//Category
+    Route::get('/publishers', [PublisherController::class, 'index']);
+    Route::get('/publishers/{id}', [PublisherController::class, 'show']);
+    Route::post('/publishers', [PublisherController::class, 'store']);
+    Route::put('/publishers/{id}', [PublisherController::class, 'update']);
+    Route::delete('/publishers/{id}', [PublisherController::class, 'destroy']);

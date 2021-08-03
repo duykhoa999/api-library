@@ -26,7 +26,32 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'address' => 'required',
+            'contacterName' => 'required',
+            'pubName' => 'required',
+            'phone' => 'required',
+        ], [
+            //Required
+            'address.required' => 'Please enter publisher\'s address!',
+            'contacterName.required' => 'Please enter the contacter\'s name!',
+            'pubName.required' => 'Please enter publisher\'s name!',
+            'phone.required' => 'Please enter the publisher\'s phone number!',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -2,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+        $author = Publisher::create($request->all());
+        
+        return response()->json([
+            'status' => 1,
+            'data' => $author,
+            'message' => "Create Publisher Successful!",
+        ]);
     }
 
     /**
