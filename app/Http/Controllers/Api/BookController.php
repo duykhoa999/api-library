@@ -47,7 +47,7 @@ class BookController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'year' => 'required|numeric',
-            'image' => 'image|max:2048',
+            // 'image' => 'image|max:2048',
             'language' => 'required',
             'pagesNum' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
@@ -69,10 +69,10 @@ class BookController extends Controller
                 'category_id.exists' => 'Please enter a correct Category!',
                 'publisher_id.exists' => 'Please enter a correct Publisher!',
                 'author_id.exists' => 'Please enter a correct Author!',
-            //Image
-                'image.image' => 'Please select an image!',
-            //Size
-                'image.max' => 'Capacity exceeded :max KB',
+            // //Image
+            //     'image.image' => 'Please select an image!',
+            // //Size
+            //     'image.max' => 'Capacity exceeded :max KB',
         ]);
 
         if ($validator->fails()) {
@@ -81,15 +81,15 @@ class BookController extends Controller
                 'errors' => $validator->errors()->toArray(),
             ]);
         }
-        //Add Image
-        $imageName = null;
-        if ($request->hasFile('image')) {
-            $imageName = $this->saveImage($request->file('image'));
-        }
+        // //Add Image
+        // $imageName = null;
+        // if ($request->hasFile('image')) {
+        //     $imageName = $this->saveImage($request->file('image'));
+        // }
         $book = Book::create([
             'title' => $request->input('title'),
             'year' => $request->input('year'),
-            'image' => $imageName,
+            'image' => $request->input('image'),
             'language' => $request->input('language'),
             'pagesNum' => $request->input('pagesNum'),
             'description' => $request->input('description'),
