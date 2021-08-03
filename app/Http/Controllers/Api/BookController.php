@@ -153,6 +153,7 @@ class BookController extends Controller
             $message = "Update Successful!";
         }
         return response()->json([
+            'data' => $book,
             'status' => $status,
             'message' => $message,
         ]);
