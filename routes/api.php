@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ReaderController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PublisherController;
+use App\Http\Controllers\Api\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,3 +65,9 @@ Route::get('/users', [UserController::class, 'index']);
     Route::post('/publishers', [PublisherController::class, 'store']);
     Route::put('/publishers/{id}', [PublisherController::class, 'update']);
     Route::delete('/publishers/{id}', [PublisherController::class, 'destroy']);
+
+//Role
+    Route::post('/roles', [RoleController::class, 'store']);
+
+//User
+    Route::post('/users', [UserController::class, 'store']);
