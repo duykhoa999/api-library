@@ -26,8 +26,8 @@ class UserController extends Controller
         }
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
             $user = Auth::user();
-            $success['token'] =  $user->createToken('api-library')->accessToken; 
-            return response()->json(['data' => ['success' => $success, 'status' => $this->successStatus]]);
+            // $success['token'] =  $user->createToken('api-library')->accessToken; 
+            return response()->json(['data' => ['success' => '$success', 'status' => $this->successStatus]]);
         } 
         else{ 
             return response()->json(['error'=>'Unauthorised', 'status' => 401]);
